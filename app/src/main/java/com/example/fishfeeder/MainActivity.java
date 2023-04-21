@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 databaseReference.child("ArJam").setValue("10").addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        Intent intent = new Intent(getApplicationContext(), Setting.class);
                         startActivity(intent);
                         finish();
                     }
