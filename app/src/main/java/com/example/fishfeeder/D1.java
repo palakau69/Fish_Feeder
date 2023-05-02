@@ -3,14 +3,10 @@ package com.example.fishfeeder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -20,13 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-import java.sql.Time;
 import java.util.Calendar;
 
-public class Setting extends AppCompatActivity implements
-        View.OnClickListener {
+public class D1 extends AppCompatActivity implements View.OnClickListener {
 
     Button btnTimePicker, btnTimePicker_2, btn_Save;
     TextView txtTime, txtTime_2, testTxt;
@@ -38,7 +30,7 @@ public class Setting extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.d1);
 
         btnTimePicker=(Button)findViewById(R.id.btn_time);
         btnTimePicker_2=(Button)findViewById(R.id.btn_time2);
@@ -80,7 +72,7 @@ public class Setting extends AppCompatActivity implements
                     databaseReference.child("ArMenit").setValue(armenit).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(Setting.this, "success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(D1.this, "success", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     });
@@ -91,7 +83,7 @@ public class Setting extends AppCompatActivity implements
                     databaseReference.child("ArJam2").setValue(arjam_2);
                     databaseReference.child("ArMenit2").setValue(armenit_2);
                 }else{
-                    Toast.makeText(Setting.this, "Menyimpan Perubahan!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(D1.this, "Menyimpan Perubahan!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -3,6 +3,7 @@ package com.example.fishfeeder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,13 +20,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    FirebaseAuth auth;
+    private CardView D1, D4;
     Button button, but_atur;
     TextView textView;
     FirebaseUser user;
-    private TextView gentong, voltase, jam, takaran;
+    FirebaseAuth auth;
+    private TextView gentong, voltase, jam,jam2, takaran;
     DatabaseReference databaseReference;
     private DatabaseReference mDatabase;
 
@@ -34,9 +36,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        D1= (CardView) findViewById(R.id.d1);
+//        D2= (CardView) findViewById(R.id.d2);
+//        D3= (CardView) findViewById(R.id.d3);
+        D4= (CardView) findViewById(R.id.d4);
+//        D5= (CardView) findViewById(R.id.d5);
+//        D6= (CardView) findViewById(R.id.d6);
+
+        D1.setOnClickListener((View.OnClickListener) this);
+//        D2.setOnClickListener((View.OnClickListener) this);
+//        D3.setOnClickListener((View.OnClickListener) this);
+        D4.setOnClickListener((View.OnClickListener) this);
+//        D5.setOnClickListener((View.OnClickListener) this);
+//        D6.setOnClickListener((View.OnClickListener) this);
+
         gentong=(TextView) findViewById(R.id.gentong);
         voltase=(TextView) findViewById(R.id.voltase);
         jam=(TextView) findViewById(R.id.jam_makan);
+        jam2=(TextView) findViewById(R.id.jam_makan_2);
         takaran=(TextView)findViewById(R.id.takaran);
         textView = findViewById(R.id.user_details);
         auth = FirebaseAuth.getInstance();
@@ -62,11 +79,15 @@ public class MainActivity extends AppCompatActivity {
                 String vvolt = snapshot.child("voltase").getValue(String.class);
                 String vjam = snapshot.child("ArJam").getValue(String.class);
                 String vmenit = snapshot.child("ArMenit").getValue(String.class);
+                String vjam2 = snapshot.child("ArJam2").getValue(String.class);
+                String vmenit2 = snapshot.child("ArMenit2").getValue(String.class);
                 String vtakaran = snapshot.child("spin").getValue(String.class);
                 gentong.setText(vgentong + " %");
                 voltase.setText(vvolt + " V");
-                jam.setText(vjam+" : "+vmenit);
+                jam.setText(vjam+":"+vmenit);
+                jam2.setText(vjam2+":"+vmenit2);
                 takaran.setText(vtakaran+" x 20g");
+
             }
 
             @Override
@@ -77,13 +98,8 @@ public class MainActivity extends AppCompatActivity {
         but_atur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child("ArJam").setValue("10").addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Intent intent = new Intent(getApplicationContext(), Setting.class);
-                        startActivity(intent);
-                    }
-                });
+                Intent intent = new Intent(getApplicationContext(), Setting.class);
+                startActivity(intent);
             }
         });
 
@@ -96,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent i ;
+        switch (view.getId()){
+            case R.id.d1: i = new Intent(this,D1.class); startActivity(i); break;
+            case R.id.d4: i = new Intent(this,D4.class); startActivity(i); break;
+        }
     }
 }
 
