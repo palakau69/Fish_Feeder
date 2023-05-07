@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/jam1"
-            android:layout_width="90dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00 : 00"
             android:layout_marginLeft="10dp"
@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/jam2"
-            android:layout_width="90dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00 : 00"
             android:layout_marginLeft="10dp"
