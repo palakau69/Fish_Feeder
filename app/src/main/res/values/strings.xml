@@ -5,4 +5,8 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="Setting">Setting</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="register_now">Register Now!</string>
+    <string name="login_now">Login Now!</string>
 </resources>
